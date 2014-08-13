@@ -1,0 +1,19 @@
+{
+  "name": "index-html-gen",
+  "version": "1.0.0",
+  "description": "Generates a index.html template.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "index.html",
+    "generate",
+    "template"
+  ],
+  "author": "Emil Johansson <emiljohansson.se@gmail.com>",
+  "license": "MIT"
+}
