@@ -1,21 +1,18 @@
 'use strict';
-var fs = require('fs'),
-    path = require('path');
+var fs = require('fs');
 
-fs.writeFile(process.cwd()+'/index.html', getTemplate(), function (err) {
-  if (err) return console.log(err);
-  console.log('index.html was generated.');
+var args = process.argv.slice(2),
+    dir = args.length >= 1 ? args[0] : "",
+    fullPath = process.cwd()+'/'+dir+'/index.html';
+
+fs.readFile(__dirname+'/template.html', 'utf8', function(err, data) {
+    if (err) return console.log(err);
+    generate(data);
 });
 
-function getTemplate() {
-    return '<!doctype html>\n' +
-        '<html>\n' +
-        '<head>\n' +
-        '    <title></title>\n' +
-        '    <link rel="stylesheet" type="text/css" href="filename.css" />\n' +
-        '    <script src="filename.js"></script>\n' +
-        '</head>\n' +
-        '<body>\n' +
-        '</body>\n' +
-        '</html>\n';
+function generate(template) {
+    fs.writeFile(fullPath, template, function (err) {
+      if (err) return console.log(err);
+      console.log(fullPath+' was generated.');
+    });
 }
